@@ -9,6 +9,10 @@
 			Senha: <input type="password" name="senha" placeholder="Senha"/><br />
 			<input type="submit" value="Entrar"/>
 	</form>
+	
+	<a href="cadastrar.jsp">Cadastrar Novo Cliente</a>
+
 </body>
+
 
 </html>

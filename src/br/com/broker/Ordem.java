@@ -1,6 +1,7 @@
 package br.com.broker;
 
 import java.io.IOException;
+import java.net.UnknownHostException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -26,24 +27,29 @@ public class Ordem extends HttpServlet{
 		}
 	}
 	
-	public void emitir(HttpServletRequest request,HttpServletResponse response) throws JSONException{
+	public void emitir(HttpServletRequest request,HttpServletResponse response) throws JSONException, UnknownHostException, IOException{
 		JSONObject json = new JSONObject();
 		HelloSpring test = new HelloSpring();
 		System.out.println(request.getParameter("tipo"));
+		System.out.println(request.getParameter("nome"));
 		String arg = request.getParameter("tipo");
 		
-		/*if(arg == "compra"){
+		if(arg.equals("compra")){
 			//faz operação de compra
-		}*/
-		if(arg.toString() == "venda"){
-			//faz operação de venda
-		System.out.println("vendeu");
 			
-		json.put("codigo_empresa", "PTR004");
-		json.put("qtd", 500);
-		json.put("preco", 34.30);
-		json.put("cpf","3423434622");
-		test.parseJSON(json);
+		}
+		if(arg.equals("venda")){
+		//faz operação de venda
+		
+		System.out.println("vendeu");
+		System.out.println(request.getCookies());
+		json.put("codigo_empresa", request.getParameter("codigo_empresa"));
+		json.put("tipo", request.getParameter("tipo"));
+		json.put("qtd", request.getParameter("quantidade"));
+		json.put("preco", request.getParameter("preco"));
+		json.put("cpf",request.getParameter("nome"));
+		
+		
 		}	
 	}
 	
