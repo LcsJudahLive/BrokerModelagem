@@ -13,7 +13,7 @@ public class Relatorio extends HttpServlet{
 	private String tipoRelatorio;
 	
 	@Override
-	protected void service(HttpServletRequest arg0, HttpServletResponse arg1) throws ServletException, IOException {
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 	}
 	
