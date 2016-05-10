@@ -116,6 +116,7 @@ public class Cliente extends HttpServlet{
 		saida.println(json);
 		JSONObject retornocliente = new JSONObject(entrada.nextLine());
 		
+		
 		if(retornocliente.getString("status")=="true"){
 			ConnectionFactory fabrica = new ConnectionFactory();
 			Connection con = fabrica.getConnection();

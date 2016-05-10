@@ -37,7 +37,7 @@ public class HelloSpring extends HttpServlet{
 	
 	
 	public void parseJSON(JSONObject json) throws JSONException, UnknownHostException, IOException{
-		Socket cliente = new Socket("10.104.8.129",5000);
+		Socket cliente = new Socket("10.104.8.126",5000);
 		PrintStream saida = new PrintStream(cliente.getOutputStream());
 		saida.println(json);
 		

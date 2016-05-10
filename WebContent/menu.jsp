@@ -16,9 +16,10 @@
 <a href="conta.jsp">Consultar Conta Corrente</a>
 
 
-<form action="hi">
-<input type="submit" value="Hi"/>
+<form action="<%= response.encodeURL("logout") %>" method="post">
+	<input type="submit" value="Logout">
 </form>
+
 
 
 

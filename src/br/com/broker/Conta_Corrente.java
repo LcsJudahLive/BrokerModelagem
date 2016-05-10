@@ -15,27 +15,31 @@ public class Conta_Corrente {
 		PreparedStatement stmt = con.prepareStatement("update conta set valor_conta = valor_conta + ? where sigla=?");
 		stmt.setString(2,sigla);
 		stmt.setFloat(1, credito);
-		stmt.executeQuery();
+		stmt.execute();
 		stmt.close();
 		con.close();
 	}
 	
-	public void debitar(float debito,String sigla) throws SQLException{
+	public void debitar(double debito,String sigla) throws SQLException{
 		Connection con = new ConnectionFactory().getConnection();
-		PreparedStatement stmt = con.prepareStatement("update conta set valor_conta = valor_conta - ? where sigla=?");
+		System.out.println("debitando...");
+		PreparedStatement stmt = con.prepareStatement("update conta set valor_conta = valor_conta-? where sigla=?");
 		stmt.setString(2,sigla);
-		stmt.setFloat(1, debito);
-		stmt.executeQuery();
+		stmt.setDouble(1, debito);
+		stmt.execute();
 		stmt.close();
 		con.close();
 	}
 	public float consultar_saldo(String sigla) throws SQLException{
 		Connection con = new ConnectionFactory().getConnection();
-		PreparedStatement stmt = con.prepareStatement("select valor_conta where sigla=?");
+		System.out.println(sigla);
+		PreparedStatement stmt = con.prepareStatement("select valor_conta from conta where sigla=?");
 		stmt.setString(1, sigla);
 		ResultSet rs = stmt.executeQuery();
-		this.saldo = rs.getFloat("valor_conta");
-		return saldo;		
+		rs.next();
+		System.out.println(rs.getDouble("valor_conta"));
+		this.saldo = (float) rs.getDouble("valor_conta");
+		return this.saldo;		
 	}
 	
 

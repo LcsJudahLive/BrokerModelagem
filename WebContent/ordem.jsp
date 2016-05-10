@@ -9,11 +9,16 @@
 
 <% ServletContext context = session.getServletContext(); %>
 
+<a href="menu.jsp">Menu</a>
+
+<form action="<%= response.encodeURL("logout") %>" method="post">
+	<input type="submit" value="Logout">
+</form>
 
 <form action="<%= response.encodeURL("emitir") %>" method="post">
 	<input type="radio" name="tipo" value="venda">Venda<br>
 	<input type="radio" name="tipo" value="compra">Compra<br>
-	<input type="number" name="preco" placeholder="Digite o Preco da acao"/></br>
+	<input type="number" step="any" name="preco" placeholder="Digite o Preco da acao"/></br>
 	<input type="text" name="codigo_empresa" placeholder="Empresa que quer operar"/></br>
 	<input type="number" name="quantidade" placeholder="Quantas acoes"/></br>
 	<input type="hidden" name="nome" value="<%= session.getAttribute("nome") %>"><br>
