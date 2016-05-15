@@ -10,11 +10,11 @@ import br.com.broker.dbconnect.ConnectionFactory;
 public class Conta_Corrente {
 	private float saldo;
 	
-	public void creditar(float credito,String sigla) throws SQLException{
+	public void creditar(double credito,String sigla) throws SQLException{
 		Connection con = new ConnectionFactory().getConnection();
 		PreparedStatement stmt = con.prepareStatement("update conta set valor_conta = valor_conta + ? where sigla=?");
 		stmt.setString(2,sigla);
-		stmt.setFloat(1, credito);
+		stmt.setDouble(1, credito);
 		stmt.execute();
 		stmt.close();
 		con.close();

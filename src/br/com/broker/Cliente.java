@@ -56,9 +56,11 @@ public class Cliente extends HttpServlet{
 			//rq = request.getRequestDispatcher("/menu.jsp");
 			HttpSession session = request.getSession();
 			session.setAttribute("nome", cliente.getSigla());
-			Cookie user = new Cookie("user",cliente.getSigla());
-			user.setMaxAge(30*60);
-			response.addCookie(user);
+			session.setMaxInactiveInterval(10*60);
+			Monitor monitor = new Monitor();
+			/*Starta a thread de monitoramento das mensagens de efetivação
+			de compra e venda vindas do DealBroker*/
+			//monitor.start(); 
 			String URL = response.encodeRedirectURL("menu.jsp");
 			response.sendRedirect(URL);
 		}
