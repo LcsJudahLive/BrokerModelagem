@@ -1,0 +1,35 @@
+apply plugin: 'eclipse'
+apply plugin: 'war'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+	compileOnly(
+    	'org.eclipse.jetty:jetty-server:9.3.8.v20160314',
+    	'org.eclipse.jetty:jetty-webapp:9.3.8.v20160314',
+    	'org.eclipse.jetty:jetty-servlet:9.3.8.v20160314',
+    )
+
+    compile(
+    	'commons-logging:commons-logging:1.2',
+
+    	'org.slf4j:slf4j-api:1.7.21',
+    	'org.slf4j:slf4j-simple:1.7.21',
+
+		'org.glassfish.jersey.core:jersey-client:2.22.2',
+    	'org.glassfish.jersey.core:jersey-server:2.22.2',
+    	'com.sun.jersey:jersey-servlet:1.19.1',
+    	'com.sun.jersey:jersey-json:1.19.1',
+
+    	'javax.servlet:javax.servlet-api:3.1.0',
+
+    	'mysql:mysql-connector-java:6.0.2',
+
+    	'org.apache.shiro:shiro-core:1.2.4',
+    	'org.apache.shiro:shiro-web:1.2.4',
+
+    	'javax.json:javax.json-api:1.0'
+    )
+}
